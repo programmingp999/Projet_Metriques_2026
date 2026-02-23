@@ -38,6 +38,10 @@ def mongraphique():
 def monhistogramme():
     return render_template("histogramme.html")
 
+@app.route("/contact")
+def MaPremiereAPI():
+    return "<h2>Ma page de contact</h2>"
+
 # Ne rien mettre après ce commentaire
     
 if __name__ == "__main__":
