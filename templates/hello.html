@@ -1,18 +1,49 @@
 <!doctype html>
 <html lang="fr">
-  <head><meta charset="utf-8"><title>Hello</title></head>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello</title>
+    <style>
+      /* Style simple pour créer les boîtes */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+      .box-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espace entre les boîtes */
+        margin-top: 40px;
+        max-width: 450px;
+      }
+      .box-link {
+        display: block;
+        padding: 15px 20px;
+        background-color: #f8f9fa; /* Fond gris très clair */
+        border: 2px solid #dee2e6; /* Bordure grise */
+        border-radius: 8px; /* Coins arrondis */
+        text-decoration: none; /* Enlève le soulignement des liens */
+        color: #212529; /* Texte foncé */
+        font-weight: bold;
+        transition: background-color 0.2s, border-color 0.2s;
+      }
+      /* Effet quand la souris passe sur la boîte */
+      .box-link:hover {
+        background-color: #e9ecef;
+        border-color: #adb5bd;
+      }
+    </style>
+  </head>
   <body>
     <h1>ATELIER METRIQUES</h1>
     <h2>Nom Prénom : AZERKANE Ahmed</h2>
 
-    <br>
-    <h3>Mes réalisations :</h3>
-    <ul>
-        <li><a href="/rapport">Graphique en courbe (Températures Paris)</a></li>
-        <li><a href="/histogramme">Histogramme (Températures Paris)</a></li>
-        <li><a href="/atelier">Atelier (Précipitations Amsterdam)</a></li>
-        <li><a href="/contact">Page de contact</a></li>
-        <li><a href="/paris">Données JSON (API Paris)</a></li>
-    </ul>
+    <div class="box-container">
+      <a href="/rapport" class="box-link">📈 Graphique en courbe (Températures Paris)</a>
+      <a href="/histogramme" class="box-link">📊 Histogramme (Températures Paris)</a>
+      <a href="/atelier" class="box-link">🌧️ Atelier (Précipitations Amsterdam)</a>
+      <a href="/contact" class="box-link">✉️ Page de contact</a>
+      <a href="/paris" class="box-link">⚙️ Données JSON (API Paris)</a>
+    </div>
   </body>
 </html>
