@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Précipitations — Amsterdam</title>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+    body { font-family: sans-serif; margin: 24px; }
+    #chart { width: 100%; height: 500px; }
+  </style>
+</head>
+<body>
+  <h1>Précipitations horaires — Amsterdam</h1>
+  <div id="chart"></div>
+
+  <script>
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(init);
+
+    async function init() {
+      const res = await fetch('/api-atelier');
+      const json = await res.json();
+      
+      const rows = json.map(p => {
+        const [datePart, timePart] = p.datetime.split('T');
+        const [y, m, d] = datePart.split('-').map(Number);
+        const [hh, mm] = timePart.split(':').map(Number);
+        return [new Date(y, m - 1, d, hh, mm, 0), Number(p.valeur)];
+      });
+
+      const data = new google.visualization.DataTable();
+      data.addColumn('datetime', 'Date/Heure');
+      data.addColumn('number', 'Précipitations (mm)');
+      data.addRows(rows);
+
+      const options = {
+        title: 'Prévisions des précipitations à Amsterdam',
+        legend: { position: 'bottom' },
+        colors: ['#007bff'], /* Couleur bleue pour la pluie */
+        hAxis: { format: 'dd/MM HH:mm' },
+        vAxis: { title: 'Millimètres (mm)' }
+      };
+
+      // Utilisation du nouveau graphique : AreaChart
+      const chart = new google.visualization.AreaChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    }
+  </script>
+</body>
+</html>
