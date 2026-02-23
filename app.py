@@ -38,6 +38,30 @@ def mongraphique():
 def monhistogramme():
     return render_template("histogramme.html")
 
+# API pour récupérer les données de précipitations à Amsterdam
+@app.get("/api-atelier")
+def api_atelier():
+    # URL générée sur open-meteo pour Amsterdam (précipitations)
+    url = "https://api.open-meteo.com/v1/forecast?latitude=52.3676&longitude=4.9041&hourly=precipitation"
+    response = requests.get(url)
+    data = response.json()
+
+    times = data.get("hourly", {}).get("time", [])
+    precipitations = data.get("hourly", {}).get("precipitation", [])
+
+    n = min(len(times), len(precipitations))
+    result = [
+        {"datetime": times[i], "valeur": precipitations[i]}
+        for i in range(n)
+    ]
+
+    return jsonify(result)
+
+# Route pour afficher la page web de l'atelier
+@app.route("/atelier")
+def monatelier():
+    return render_template("atelier.html")
+
 
 # Ne rien mettre après ce commentaire
     
