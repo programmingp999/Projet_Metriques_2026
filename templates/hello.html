@@ -1,9 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head><meta charset="utf-8"><title>Hello</title></head>
-  <body>
-    <h1>ATELIER METRIQUES</h1>
-    <h2>Nom Prénom : AZERKANE Ahmed</h2>
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Projet Métriques</title>
+    <style>
+        /* Un style simple, clair et moderne */
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: #f7f9fc; 
+            padding: 40px; 
+            text-align: center; 
+            color: #2c3e50;
+        }
+        h1 { 
+            color: #2c3e50; 
+            margin-bottom: 10px;
+        }
+        p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        /* Conteneur pour aligner les boutons */
+        .menu { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            align-items: center; 
+        }
+        /* Style des boutons (liens) */
+        a { 
+            text-decoration: none; 
+            background-color: #20c997; /* Couleur menthe chic */
+            color: white; 
+            padding: 15px 25px; 
+            border-radius: 8px; 
+            width: 300px; 
+            font-size: 16px;
+            font-weight: bold; 
+            transition: background-color 0.2s, transform 0.2s; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* Effet au survol de la souris */
+        a:hover { 
+            background-color: #17a589; 
+            transform: translateY(-2px);
+        }
+        .api-link {
+            background-color: #95a5a6; /* Gris pour l'API technique */
+        }
+        .api-link:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
 
+    <h1>Bienvenue sur le Dashboard de [Ton Prénom et Nom]</h1>
+    <p>Sélectionnez un module pour visualiser les données métriques de l'atelier :</p>
+
+    <div class="menu">
+        <a href="/rapport">📈 Températures de Paris (Courbe)</a>
+        <a href="/histogramme">📊 Températures de Paris (Histogramme)</a>
+        <a href="/atelier">🌧️ Atelier : Précipitations d'Amsterdam</a>
+        <a href="/contact">✉️ Page de Contact</a>
+        <a href="/paris" class="api-link">⚙️ Voir les données JSON (API Brute)</a>
+    </div>
+
+</body>
+</html>
